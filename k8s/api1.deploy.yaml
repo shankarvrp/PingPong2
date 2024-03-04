@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: api1
+ # namespace: api-comms
+spec:
+ selector:
+  matchLabels:
+   name: api1
+ template:
+   metadata:
+    labels:
+     name: api1
+   spec:
+    containers:
+    - name: api1
+      image: shankarvrp/api1
+      volumeMounts:
+        - name: api-storage
+          mountPath: "/app/data"
+          readOnly: false
+    volumes:
+    - name: api-storage
+      persistentVolumeClaim:
+        claimName: pvc-azurefile-apicomms

@@ -1,0 +1,21 @@
+
+
+# Clean images & containers
+docker rm -f $(docker ps -aq)
+docker rmi -f $(docker images -aq)
+
+# Docker Build
+docker build -f Dockerfile.ping . -t pingapi --no-cache --build-arg APP_ENV=Prod
+docker build -f Dockerfile.pong . -t pongapi --no-cache
+
+# Docker Run
+docker run -d -p 5001:8080 pingapi:latest
+docker run -d -p 5002:8080 pongapi:latest
+docker ps -a
+
+# Docker container exec
+docker exec -it 2a /bin/bash   
+
+# Test with Curl
+curl -X POST http://localhost:5001/send -H "Content-Type: text/plain" -d 'test'
+

@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+
+ARG APP_ENV=Debug
+ARG API_EP
+ENV EXTERNAL_API_URL=$API_EP
+
+COPY bin/$APP_ENV/net8.0 .
+ENTRYPOINT ["dotnet", "API0.dll"]

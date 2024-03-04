@@ -1,0 +1,30 @@
+############ Azure ###############
+
+#Create ACR
+$acr=sanarayaacr
+
+az acr create -n $acr -g Demo --sku basic
+
+# Attach ACR to AKS
+az aks update -n AKSDemo -g Demo --attach-acr /subscriptions/a05e5f5e-bebe-439d-8d0e-86f23e61b1bb/resourceGroups/Demo/providers/Microsoft.ContainerRegistry/registries/sanarayaacr
+
+
+############ docker ###############
+# Create 
+kubectl create namespace pingpong
+
+
+# Execute
+kubectl delete all --all -n pingpong
+
+kubectl apply -f ping.deploy.yaml 
+kubectl apply -f pong.deploy.yaml 
+kubectl apply -f ping.service.yaml 
+kubectl apply -f pong.service.yaml
+
+kubectl get all -n pingpong
+
+
+# Troubleshoot 
+kubectl exec -it pong-f76b7fd97-fd754 -n pingpong -- bash
+
