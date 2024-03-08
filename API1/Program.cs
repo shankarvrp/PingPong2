@@ -28,7 +28,7 @@ app.MapGet("/hello", ([FromQuery] string name) =>
     return $"Hello {name}";
 });
 
-app.MapPost("/todos", (Message msg) =>
+app.MapPost("/message", (Message msg) =>
 {
     var result = msg.Data + " - return"; 
 

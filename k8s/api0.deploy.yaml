@@ -22,6 +22,11 @@ spec:
         - name: api-storage
           mountPath: "/app/data"
           readOnly: false
+      resources:
+       limits:
+        cpu: 500m
+       requests:
+        cpu: 200m
     volumes:
     - name: api-storage
       persistentVolumeClaim:

@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API0", "API0\API0.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{3FFACC5C-3F14-485D-9641-ADA81FCC9319}"
 	ProjectSection(SolutionItems) = preProject
+		k8s\api0.autoscale.hpa.yaml = k8s\api0.autoscale.hpa.yaml
 		k8s\api0.deploy.yaml = k8s\api0.deploy.yaml
 		k8s\api0.service.yaml = k8s\api0.service.yaml
 		k8s\api1.deploy.yaml = k8s\api1.deploy.yaml

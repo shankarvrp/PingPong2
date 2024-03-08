@@ -56,7 +56,7 @@ app.MapPost("/", async (Message todo, IHttpClientFactory httpFactory, ILogger lo
     // Call the external API
     var httpClient = httpFactory.CreateClient("APIClient");
     var data = JsonSerializer.Serialize(todo);
-    var httpResponse = await httpClient.PostAsync("/todos", new StringContent(data, Encoding.UTF8, "application/json"));
+    var httpResponse = await httpClient.PostAsync("/message", new StringContent(data, Encoding.UTF8, "application/json"));
     var pongResponse = await httpResponse.Content.ReadAsStringAsync();
 
     logger.Information(httpClient.BaseAddress.ToString());
